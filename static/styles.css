@@ -1,0 +1,177 @@
+
+body 
+{
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url('/static/travel.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+h1 
+{
+  text-align: center;
+  color: #ff6f61;
+  margin-top: 40px;
+  font-size: 48px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(255, 111, 97, 0.2);
+}
+
+
+.background-image-block 
+{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.user-auth,
+.travel-entry,
+.photo-management,
+.search-form 
+{
+  margin: 20px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.user-auth p 
+{
+  text-align: center;
+  color: #5cbbff;
+  font-size: 18px;
+}
+
+h2 
+{
+  text-align: center;
+  color: #2516cd;
+}
+
+h3
+{
+  text-align: center;
+  color: #16becd;
+}
+
+form 
+{
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+
+label 
+{
+  font-weight: bold;
+  color: #a71d1d; 
+}
+
+input[type="text"],
+input[type="date"],
+textarea 
+{
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ff6f61;
+  border-radius: 5px;
+  box-sizing: border-box;
+  text-align: center; 
+  font-family: 'Lobster', cursive; 
+}
+
+button 
+{
+  width: 100%;
+  padding: 12px;
+  background-color: #ffcc5c;
+  color: #2ab7ca;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover 
+{
+  background-color: #ff6f61;
+}
+
+
+table 
+{
+  width: 100%;
+  margin: 20px auto;
+  border-collapse: collapse;
+}
+
+th, td 
+{
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  background-color: #ffcc5c; 
+}
+
+th 
+{
+  background-color: #4ecdc4;
+  font-weight: bold;
+  color: #fff;
+}
+
+a 
+{
+  text-decoration: none;
+  color: #2ab7ca;
+}
+
+a:hover 
+{
+  text-decoration: underline;
+}
+
+
+@media only screen and (max-width: 768px) 
+{
+  .background-image-block
+   {
+    height: auto;
+  }
+
+  .user-auth,
+  .travel-entry,
+  .photo-management,
+  .search-form
+  {
+    margin: 10px;
+    padding: 15px;
+  }
+
+  h1 
+  {
+    font-size: 36px;
+  }
+
+  input[type="text"],
+  input[type="date"],
+  textarea 
+  {
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+
+  button 
+  {
+    padding: 10px;
+  }
+}
