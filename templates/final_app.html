@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Journal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Travel Journal</h1>
+
+        <!-- User Authentication -->
+        <div class="user-auth">
+            <p>Welcome to our Amazing Travel Journal!</p>
+            <p>Get ready to embark on a journey of a lifetime.</p>
+        </div>
+        </div>
+
+        <!-- Create Travel Entries -->
+        <h2>Add New Travel Entry</h2>
+        <form action="{{ url_for('add_entry') }}" method="POST">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required><br>
+            <label for="age">Your Age:</label>
+            <input type="number" id="age" name="age" required><br>
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" required><br>
+            <label for="favorite_place">Favorite Place in the Location:</label>
+            <input type="text" id="favorite_place" name="favorite_place" required><br>
+            <label for="from_date">From Date:</label>
+            <input type="date" id="from_date" name="from_date" required><br>
+            <label for="to_date">To Date:</label>
+            <input type="date" id="to_date" name="to_date" required><br>
+            <label for="description">Description:</label><br>
+            <textarea id="description" name="description" rows="4" cols="50" required></textarea><br>
+            <!-- Additional fields for photos can be added here -->
+            <button type="submit">Add My Awesome Entry</button>
+        </form>
+
+        <!-- View and Edit Entries -->
+        <h2>My Travel Entries</h2>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Location</th>
+                <th>Favorite Place</th>
+                <th>From Date</th>
+                <th>To Date</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+            {% for entry in travel_entries %}
+            <tr>
+                <td>{{ entry.name }}</td>
+                <td>{{ entry.age }}</td>
+                <td>{{ entry.location }}</td>
+                <td>{{ entry.favorite_place }}</td>
+                <td>{{ entry.from_date }}</td>
+                <td>{{ entry.to_date }}</td>
+                <td>{{ entry.description }}</td>
+                <td>
+                    <form action="{{ url_for('delete_entry', entry_id=entry.id) }}" method="POST">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <!-- Upload and Manage Photos -->
+        <h3>Time for some Pictures !!!!!</h3>
+        <form action="{{ url_for('upload_photo') }}" method="POST" enctype="multipart/form-data">
+            <label for="photo">Select an Amazing Photo:</label>
+            <input type="file" id="photo" name="photo" accept="image/*" required>
+            <button type="submit">Time to add my creative pictures</button>
+        </form>
+        {% for photo in photos %}
+        <img src="{{ url_for('static', filename='photos/' + photo.filename) }}" alt="Uploaded Photo">
+        {% endfor %}
+        <!-- Search and Filter Entries -->
+        <h2>Search and Filter Entries</h2>
+        <form action="{{ url_for('search_entries') }}" method="GET">
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location">
+            <label for="from_date">From:</label>
+            <input type="date" id="from_date" name="from_date">
+            <label for="to_date">To:</label>
+            <input type="date" id="to_date" name="to_date">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+</body>
+
+</html>
